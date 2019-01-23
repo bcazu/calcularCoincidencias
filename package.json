@@ -1,0 +1,19 @@
+{
+  "name": "calcular_coincidencias",
+  "version": "1.0.0",
+  "description": "Calcula las coincidencias entre un nombre que se va a ingresar y un nombre ya almacenado en una bd. Ejemplo: \"juan\" tiene un 100% de coincidencias con \"juan\" o \"caro\" tiene un 99% de coincidencias con \"carro\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "coincidencias",
+    "porcentaje",
+    "nombres"
+  ],
+  "author": "Brayan Castaño",
+  "license": "MIT",
+  "dependencies": {
+    "yargs": "^12.0.5"
+  }
+}
