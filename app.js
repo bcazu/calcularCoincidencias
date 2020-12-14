@@ -1,15 +1,31 @@
-const argv = require('yargs').options({
-    nombre:{
-        alias: 'n',
-        desc: 'Commando para ingresar un nombre',
-        demand: true
-    }
-}).argv;
+// const argv = require('yargs').options({
+//     nombre:{
+//         alias: 'n',
+//         desc: 'Commando para ingresar un nombre',
+//         demand: true
+//     }
+// }).argv;
 
 
 let bd =  [ "Argos.S.A.S", "Argon S.aS", "Brayan Castaño","Carolina Montoya"]
-let nombre = argv.nombre;
-
+// let nombre = argv.nombre;
+let nombre = '';
+let DoCalculo = ()=>{
+    nombre = document.getElementById('palabra').value;
+    console.log(nombre);
+    calcularCoincidencias( nombre )
+    .then( resp =>{
+        //console.log(resp)
+    if(resp.porc > 0){
+        console.log(`La palabra ${nombre} coincide en un ${resp.porc}% con ${resp.palabra}`);
+    }else{
+        console.log(`${nombre} no está creada en la bd, será ingresada`);
+    }
+    } )
+    .catch( e  => {
+        console.log(e);
+    })
+}
 let calcularCoincidencias = async ( nombre ) => {
     let totalBd = 0; // almacena la cantidad de letras de la palabra almacenada en la bd
     let totalNom = 0; // almacena la cantidad de letras de la palabra a ingresar
@@ -86,15 +102,3 @@ let calcularCoincidencias = async ( nombre ) => {
     return coincidenciaMayor;
 }
 
-calcularCoincidencias( nombre )
-.then( resp =>{
-    //console.log(resp)
-   if(resp.porc > 0){
-    console.log(`La palabra ${argv.nombre} coincide en un ${resp.porc}% con ${resp.palabra}`);
-   }else{
-       console.log(`${argv.nombre} no está creada en la bd, será ingresada`);
-   }
-} )
-.catch( e  => {
-    console.log(e);
-})
